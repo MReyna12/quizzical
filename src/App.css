@@ -2,3 +2,46 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+* {
+  margin: 0;
+}
+
+button {
+  background-color: #4d5b9e;
+  color: #f5f7fb;
+  border: 1px solid transparent;
+  border-radius: 0.938rem;
+  padding: 0.938rem 4.063rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 1s;
+}
+
+button:hover {
+  background-color: rgba(77, 211, 77, 0.568);
+  color: #293264;
+}
+
+.blobs {
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  z-index: -1;
+
+  transform: rotate(-128.49deg);
+}
+
+.yellow-blob {
+  border-radius: 55% 45% 59% 41% / 32% 51% 49% 68%;
+  right: -100px;
+  top: -150px;
+  background-color: #fefad1;
+}
+
+.blue-blob {
+  border-radius: 50% 60% 70% 40% / 20% 40% 60% 40%;
+  left: -150px;
+  bottom: -80px;
+  background-color: #deebf8;
+}
