@@ -15,3 +15,26 @@ h1 {
   margin-top: 0.938rem;
   margin-bottom: 1.563rem;
 }
+
+.blobs {
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  z-index: -1;
+
+  transform: rotate(-128.49deg);
+}
+
+.yellow-blob {
+  border-radius: 55% 45% 59% 41% / 32% 51% 49% 68%;
+  right: -100px;
+  top: -150px;
+  background-color: #fefad1;
+}
+
+.blue-blob {
+  border-radius: 50% 60% 70% 40% / 20% 40% 60% 40%;
+  left: -150px;
+  bottom: -80px;
+  background-color: #deebf8;
+}
