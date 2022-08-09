@@ -2,11 +2,9 @@ import React from "react";
 import quizImg from "/quiz.png";
 import "./Home.css";
 
-function Home() {
+function Home(props) {
   return (
     <div>
-      <div className="blobs yellow-blob"></div>
-      <div className="blobs blue-blob"></div>
       <div className="centered">
         <img
           className="spin"
@@ -15,7 +13,7 @@ function Home() {
         />
         <h1>Quizzical</h1>
         <p className="top-bottom-spacing">Test your trivia skills!</p>
-        <button>Start quiz</button>
+        <button onClick={props.toggle}>Start quiz</button>
       </div>
     </div>
   );
