@@ -1,0 +1,27 @@
+p {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/** Button and Button Container Styling **/
+.flex-plus-gap {
+  display: flex;
+  gap: 1rem;
+}
+
+.responses {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: #4d5b9e;
+  color: #293264;
+
+  padding: 0.438rem 1.063rem;
+  margin-bottom: 1.5rem;
+}
+
+.bottom-border {
+  border-bottom: 1px solid black;
+}
+
+.selectedAnswer {
+  background-color: blue;
+}

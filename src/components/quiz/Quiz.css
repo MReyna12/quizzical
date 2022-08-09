@@ -1,0 +1,9 @@
+/** Content Container Styling **/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 20px;
+  max-width: 600px;
+  overflow: auto;
+}

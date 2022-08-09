@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import "./Quiz.css";
 
 function Quiz() {
-  // Create state variables to manage the questions pulled from the trivia API
+  // Create state variables to manage the data pulled from the trivia API
   const [triviaData, setTriviaData] = useState([]);
 
   // Make fetch request to obtain the data to be used to populate five questions/answers
@@ -21,18 +21,12 @@ function Quiz() {
 
   // Generate five questions, correct answers, and incorrect answers to be passed as props to the Trivia-Questions component
   const questions = triviaData.map((triviaObject) => {
-    return (
-      <Questions
-        key={uuidv4()}
-        question={triviaObject.question}
-        correctAnswer={triviaObject.correct_answer}
-        incorrectAnswer={triviaObject.incorrect_answers}
-      />
-    );
+    const uniqueKey = uuidv4();
+    return <Questions key={uniqueKey} id={uniqueKey} item={triviaObject} />;
   });
   //console.log(triviaData);
 
-  return <main>{questions}</main>;
+  return <main className="container">{questions}</main>;
 }
 
 export default Quiz;
