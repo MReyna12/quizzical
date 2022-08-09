@@ -19,18 +19,18 @@ function Quiz() {
     getTrivia();
   }, []);
 
-  // Generate five questions
+  // Generate five questions, correct answers, and incorrect answers to be passed as props to the Trivia-Questions component
   const questions = triviaData.map((triviaObject) => {
     return (
       <Questions
         key={uuidv4()}
         question={triviaObject.question}
         correctAnswer={triviaObject.correct_answer}
-        incorrect_answer={triviaObject.incorrect_answers}
+        incorrectAnswer={triviaObject.incorrect_answers}
       />
     );
   });
-  console.log(triviaData);
+  //console.log(triviaData);
 
   return <main>{questions}</main>;
 }
