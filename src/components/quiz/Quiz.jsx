@@ -1,32 +1,47 @@
 import React from "react";
-import Questions from "../trivia/Trivia-Questions";
+//import Questions from "../trivia/Questions";
+import { nanoid } from "nanoid";
+import { decode } from "html-entities";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import "./Quiz.css";
 
-function Quiz() {
-  // Create state variables to manage the data pulled from the trivia API
-  const [triviaData, setTriviaData] = useState([]);
+function Quiz(props) {
+  console.log(props.item);
+  // Create the answer elements
+  const correctAnswerElement = (
+    <button key={nanoid()} className="responses">
+      {decode(props.item.correct_answer)}
+    </button>
+  );
 
-  // Make fetch request to obtain the data to be used to populate five questions/answers
-  useEffect(() => {
-    console.log("useEffect just ran");
-    async function getTrivia() {
-      const res = await fetch("https://opentdb.com/api.php?amount=5");
-      const data = await res.json();
-      setTriviaData(data.results);
-    }
-    getTrivia();
-  }, []);
-
-  // Generate five questions, correct answers, and incorrect answers to be passed as props to the Trivia-Questions component
-  const questions = triviaData.map((triviaObject) => {
-    const uniqueKey = uuidv4();
-    return <Questions key={uniqueKey} id={uniqueKey} item={triviaObject} />;
+  const incorrectAnswerElements = props.item.incorrect_answers.map((answer) => {
+    return (
+      <button key={nanoid()} className="responses">
+        {decode(answer)}
+      </button>
+    );
   });
-  //console.log(triviaData);
 
-  return <main className="container">{questions}</main>;
+  // Create a new array with the incorrect answers AND the correct answer element
+  const responses = [...incorrectAnswerElements, correctAnswerElement];
+
+  // Randomize the order of the responses so that the answer is not always the last button
+  const shuffleRespones = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  };
+  shuffleRespones(responses);
+
+  return (
+    <section className="bottom-border">
+      <p>{decode(props.item.question)}</p>
+      <div className="flex-plus-gap">{responses}</div>
+    </section>
+  );
 }
 
 export default Quiz;

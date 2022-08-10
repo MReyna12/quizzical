@@ -22,6 +22,14 @@ p {
   border-bottom: 1px solid black;
 }
 
-.selectedAnswer {
-  background-color: blue;
+.selected-button {
+  background-color: rgba(188, 233, 64, 0.795);
+}
+
+.correct-answer {
+  background-color: rgba(7, 175, 7, 0.24);
+}
+
+.incorrect-answer {
+  background-color: rgba(255, 0, 0, 0.363);
 }

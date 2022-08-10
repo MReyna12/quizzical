@@ -45,3 +45,44 @@ button:hover {
   bottom: -80px;
   background-color: #deebf8;
 }
+
+h1 {
+  font-weight: 700;
+  font-size: 1.953rem;
+}
+
+img {
+  margin-bottom: 1rem;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-text {
+  text-align: center;
+}
+
+.top-bottom-spacing {
+  margin-top: 0.938rem;
+  margin-bottom: 1.563rem;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
