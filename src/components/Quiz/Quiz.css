@@ -8,6 +8,7 @@
   overflow: auto;
 }
 
+/** Manage layout for the container that holds the check answers and play again buttons + text **/
 .flex-margin {
   display: flex;
   margin-top: 2rem;
@@ -22,6 +23,7 @@
   justify-content: space-between;
 }
 
+/** Provides a background color to the check answers and play again buttons **/
 .quiz-buttons:hover {
   background-color: #4d5b9e83;
 }
