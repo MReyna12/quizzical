@@ -87,7 +87,6 @@ img {
   }
 }
 
-
 .check-answers-button {
   align-self: center;
   margin-top: 3rem;
@@ -95,4 +94,4 @@ img {
 
 .check-answers-button:hover {
   background-color: #4d5b9e83;
-
+}
