@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [Overview](#Overview)
-  - [Screenshot](#Screenshot)
+  - [Recording](#Recording)
   - [Links](#Links)
 - [My Process](#My-Process)
   - [Built With](#Built-With)
@@ -14,7 +14,7 @@
 
 ## Overview
 
-### Screenshot
+### Recording
 
 https://user-images.githubusercontent.com/37000585/184247508-69e9b908-c6d1-4d77-a900-b314a75e09b6.mp4
 
