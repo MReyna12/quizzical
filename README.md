@@ -20,7 +20,7 @@ https://user-images.githubusercontent.com/37000585/184247508-69e9b908-c6d1-4d77-
 
 ### Links
 
-- [Quizzical](https://reyna-travel-journal.netlify.app/)
+- [Quizzical](https://quizzical-mr.netlify.app/)
 
 ## My Process
 
