@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import quizImg from "/quiz.png";
-import Quiz from "./components/quiz/Quiz";
+import Quiz from "./components/Quiz/Quiz";
 import "./App.css";
 
 function App() {
-  // State management that determines whether or not the Home component should be displayed
+  // State management that determines whether or not the Quiz component should be displayed
   const [quizStart, setQuizStart] = useState(false);
 
   function handleQuizStart() {
@@ -29,7 +29,7 @@ function App() {
             alt="An icon that displays the text quiz with generic boxes and lines representing text"
           />
           <h1>Quizzical</h1>
-          <p className="top-bottom-spacing">Test your trivia skills!</p>
+          <p className="home-page-paragraph-margin">Test your trivia skills!</p>
           <button onClick={handleQuizStart}>Start quiz</button>
         </section>
       )}

@@ -1,5 +1,5 @@
 import React from "react";
-import Questions from "../trivia/Questions";
+import Questions from "../Questions/Questions";
 import { nanoid } from "nanoid";
 import getQuestions from "../../services/getQuestions";
 import { useState, useEffect } from "react";

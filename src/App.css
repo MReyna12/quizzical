@@ -1,49 +1,5 @@
-#root {
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 * {
   margin: 0;
-}
-
-button {
-  background-color: #4d5b9e;
-  color: #f5f7fb;
-  border: 1px solid transparent;
-  border-radius: 0.938rem;
-  padding: 0.938rem 4.063rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 1s;
-}
-
-button:hover {
-  background-color: rgba(77, 211, 77, 0.568);
-  color: #293264;
-}
-
-.blobs {
-  width: 300px;
-  height: 300px;
-  position: fixed;
-  z-index: -1;
-
-  transform: rotate(-128.49deg);
-}
-
-.yellow-blob {
-  border-radius: 55% 45% 59% 41% / 32% 51% 49% 68%;
-  right: -100px;
-  top: -150px;
-  background-color: #fefad1;
-}
-
-.blue-blob {
-  border-radius: 50% 60% 70% 40% / 20% 40% 60% 40%;
-  left: -150px;
-  bottom: -80px;
-  background-color: #deebf8;
 }
 
 h1 {
@@ -55,6 +11,52 @@ img {
   margin-bottom: 1rem;
 }
 
+/** Styling used to create the blobs in the bottom left and top right corners **/
+.blobs {
+  width: 500px;
+  height: 300px;
+  position: fixed;
+  z-index: -1;
+
+  transform: rotate(-128.49deg);
+}
+
+.yellow-blob {
+  border-radius: 50% 60% 70% 40% / 20% 40% 60% 40%;
+  right: -180px;
+  top: -80px;
+  background-color: #fcf6ba;
+}
+
+.blue-blob {
+  border-radius: 50% 60% 70% 40% / 20% 40% 60% 40%;
+  left: -150px;
+  bottom: -80px;
+  background-color: #d0e6fc;
+}
+
+/** Applies to all buttons unless overwritten via other style sheets **/
+button {
+  background-color: #4d5b9e;
+  color: #f5f7fb;
+  border: 1px solid transparent;
+  border-radius: 0.938rem;
+  padding: 0.938rem 4.063rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(77, 211, 77, 0.568);
+  color: #293264;
+}
+
+button:active {
+  transition: 0.1s;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(5px);
+}
+/** Centers the home page content and quiz content **/
 .centered {
   position: absolute;
   top: 50%;
@@ -66,11 +68,13 @@ img {
   text-align: center;
 }
 
-.top-bottom-spacing {
+/** Margin between the paragraph, button, and quizzical text/img on home page **/
+.home-page-paragraph-margin {
   margin-top: 0.938rem;
   margin-bottom: 1.563rem;
 }
 
+/** Causes the Quizzical logo to spin one time, starting slowly, then speeding up, and then slowing down **/
 .spin {
   animation-name: spin;
   animation-duration: 500ms;
@@ -78,6 +82,7 @@ img {
   animation-timing-function: ease-in-out;
 }
 
+/** Controls the starting point and end point of the spin animation **/
 @keyframes spin {
   from {
     transform: rotate(0deg);
