@@ -7,6 +7,8 @@ function App() {
   // State management that determines whether or not the Quiz component should be displayed
   const [quizStart, setQuizStart] = useState(false);
 
+  // Function handler that swaps the state of quizStart--this determines if the Quiz component is displayed or if the "home page" is displayed;
+  // state swaps once the user presses the Start quiz button and play again button (found in Quiz component)
   function handleQuizStart() {
     setQuizStart((prevState) => !prevState);
   }
