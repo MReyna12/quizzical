@@ -1,5 +1,5 @@
 import React from "react";
-//import Questions from "../trivia/Questions";
+import Questions from "../trivia/Questions";
 import { nanoid } from "nanoid";
 import getQuestions from "../../services/getQuestions";
 import { useState, useEffect } from "react";
@@ -31,25 +31,23 @@ function Quiz() {
   function handleSelectedAnswer(questionId, answer) {
     console.log("handleSelectedAnswer called");
     //console.log(questionId, answer);
-    setTriviaData((prevTriviaData) => {
+    setTriviaData((prevTriviaData) =>
       prevTriviaData.map((question) =>
         question.id === questionId
           ? { ...question, selectedAnswer: answer }
           : question
-      );
-    });
+      )
+    );
   }
 
   // Set data in the questionsArray
-  const questions = triviaData.map((question) => {
-    console.log("questions component function called");
-    //console.log(question);
-    <Quiz
+  const questions = triviaData.map((question) => (
+    <Questions
       key={question.id}
       item={question}
       handleSelectedAnswer={handleSelectedAnswer}
-    />;
-  });
+    />
+  ));
 
   return <section>{questions}</section>;
 }
