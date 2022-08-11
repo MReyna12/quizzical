@@ -9,14 +9,25 @@ function Quiz(props) {
   console.log(props.item);
   // Create the answer elements
   const correctAnswerElement = (
-    <button key={nanoid()} className="responses">
+    //console.log(props);
+    <button
+      key={nanoid()}
+      onClick={() =>
+        props.handleSelectedAnswer(props.item.id, props.correct_answer)
+      }
+      className="responses"
+    >
       {decode(props.item.correct_answer)}
     </button>
   );
 
   const incorrectAnswerElements = props.item.incorrect_answers.map((answer) => {
     return (
-      <button key={nanoid()} className="responses">
+      <button
+        key={nanoid()}
+        onClick={() => props.handleSelectedAnswer(props.item.id, answer)}
+        className="responses"
+      >
         {decode(answer)}
       </button>
     );
@@ -24,6 +35,8 @@ function Quiz(props) {
 
   // Create a new array with the incorrect answers AND the correct answer element
   const responses = [...incorrectAnswerElements, correctAnswerElement];
+
+  incorrectAnswerElements.push(correctAnswerElement);
 
   // Randomize the order of the responses so that the answer is not always the last button
   const shuffleRespones = (array) => {
@@ -34,7 +47,10 @@ function Quiz(props) {
       array[j] = temp;
     }
   };
+
   shuffleRespones(responses);
+
+  shuffleRespones(incorrectAnswerElements);
 
   return (
     <section className="bottom-border">
