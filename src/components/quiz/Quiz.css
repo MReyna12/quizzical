@@ -7,3 +7,21 @@
   max-width: 600px;
   overflow: auto;
 }
+
+.flex-margin {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.check-answers-container {
+  justify-content: center;
+}
+
+.play-again-container {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-buttons:hover {
+  background-color: #4d5b9e83;
+}

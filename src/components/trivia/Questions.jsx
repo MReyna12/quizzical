@@ -46,26 +46,18 @@ function Questions(props) {
   });
 
   // Create a new array with the incorrect answers AND the correct answer element so that the element order can be randomized
-  const responses = [...incorrectAnswerElements, correctAnswerElement];
+  const responses = [correctAnswerElement, ...incorrectAnswerElements];
 
-  // Randomize the order of the responses so that the answer is not always the last button; apply useEffect so the shuffle is only ran once and not each time the user clicks a response button
-  useEffect(() => {
-    const shuffleResponses = (array) => {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-    };
-    shuffleResponses(responses);
-  }, []);
+  // Randomize the order of the responses so that the answer is not always the first button
+  const sortedAnswerElements = responses.sort((a, b) =>
+    a.props.children.localeCompare(b.props.children)
+  );
 
   return (
     <div>
       <section className="bottom-border">
         <p>{decode(props.item.question)}</p>
-        <div className="flex-plus-gap">{responses}</div>
+        <div className="flex-plus-gap">{sortedAnswerElements}</div>
       </section>
     </div>
   );
