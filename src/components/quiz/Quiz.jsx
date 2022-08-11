@@ -1,63 +1,57 @@
 import React from "react";
 //import Questions from "../trivia/Questions";
 import { nanoid } from "nanoid";
-import { decode } from "html-entities";
+import getQuestions from "../../services/getQuestions";
 import { useState, useEffect } from "react";
 import "./Quiz.css";
 
-function Quiz(props) {
-  console.log(props.item);
-  // Create the answer elements
-  const correctAnswerElement = (
-    //console.log(props);
-    <button
-      key={nanoid()}
-      onClick={() =>
-        props.handleSelectedAnswer(props.item.id, props.correct_answer)
-      }
-      className="responses"
-    >
-      {decode(props.item.correct_answer)}
-    </button>
-  );
+function Quiz() {
+  // Create state variables to manage the data pulled from the trivia API
+  const [triviaData, setTriviaData] = useState([]);
 
-  const incorrectAnswerElements = props.item.incorrect_answers.map((answer) => {
-    return (
-      <button
-        key={nanoid()}
-        onClick={() => props.handleSelectedAnswer(props.item.id, answer)}
-        className="responses"
-      >
-        {decode(answer)}
-      </button>
-    );
+  // Call fetch function to make fetch request and set the data to triviaData
+  useEffect(() => {
+    getQuestions().then((questions) => {
+      console.log("fetch effect called");
+      console.log(questions.length);
+      return setTriviaData(
+        questions.map((question) => {
+          return {
+            ...question,
+            id: nanoid(),
+            selectedAnswer: "",
+            showAnswer: false,
+          };
+        })
+      );
+    });
+  }, []);
+
+  // Determine what happens when an answer is selected
+  function handleSelectedAnswer(questionId, answer) {
+    console.log("handleSelectedAnswer called");
+    //console.log(questionId, answer);
+    setTriviaData((prevTriviaData) => {
+      prevTriviaData.map((question) =>
+        question.id === questionId
+          ? { ...question, selectedAnswer: answer }
+          : question
+      );
+    });
+  }
+
+  // Set data in the questionsArray
+  const questions = triviaData.map((question) => {
+    console.log("questions component function called");
+    //console.log(question);
+    <Quiz
+      key={question.id}
+      item={question}
+      handleSelectedAnswer={handleSelectedAnswer}
+    />;
   });
 
-  // Create a new array with the incorrect answers AND the correct answer element
-  const responses = [...incorrectAnswerElements, correctAnswerElement];
-
-  incorrectAnswerElements.push(correctAnswerElement);
-
-  // Randomize the order of the responses so that the answer is not always the last button
-  const shuffleRespones = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-  };
-
-  shuffleRespones(responses);
-
-  shuffleRespones(incorrectAnswerElements);
-
-  return (
-    <section className="bottom-border">
-      <p>{decode(props.item.question)}</p>
-      <div className="flex-plus-gap">{responses}</div>
-    </section>
-  );
+  return <section>{questions}</section>;
 }
 
 export default Quiz;

@@ -1,56 +1,36 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import { decode } from "html-entities";
 import "./Questions.css";
 
 function Questions(props) {
   //console.log(props.id);
-
-  // Create incorrect answer elements and incorrect answer class name
-  const incorrectAnswersElements = props.item.incorrect_answers.map(
-    (answer) => {
-      const incorrectAnswerClassName = `${
-        props.item.selectedAnswer === answer ? "selected-button" : "responses"
-      }
-        ${
-          props.item.showAnswer &&
-          props.item.selectedAnswer === answer &&
-          "incorrect-answer"
-        }`;
-      return (
-        <button
-          key={uuidv4()}
-          className={incorrectAnswerClassName}
-          onClick={() => props.handleSelectedAnswer(props.item.id, answer)}
-        >
-          {decode(answer)}
-        </button>
-      );
-    }
-  );
-
-  // Create correct answer element and class name
-  const correctAnswerClassName = `
-		${
-      props.item.selectedAnswer === props.id.correct_answer
-        ? "selected-button"
-        : "responses"
-    }
-    ${props.item.showAnswer && "correct-answer"}`;
-
+  // Create the answer elements
   const correctAnswerElement = (
     <button
-      key={uuidv4()}
-      className={correctAnswerClassName}
+      key={nanoid()}
       onClick={() =>
         props.handleSelectedAnswer(props.item.id, props.item.correct_answer)
       }
+      className="responses"
     >
       {decode(props.item.correct_answer)}
     </button>
   );
-  // Create a new array with the incorrect answers AND the correct answer element
-  const responses = [...incorrectAnswersElements, correctAnswerElement];
+
+  const incorrectAnswerElements = props.item.incorrect_answers.map((answer) => {
+    return (
+      <button
+        key={nanoid()}
+        onClick={() => props.handleSelectedAnswer(props.item.id, answer)}
+        className="responses"
+      >
+        {decode(answer)}
+      </button>
+    );
+  });
+
+  // Create a new array with the incorrect answers AND the correct answer element so that the element order can be randomized
+  const responses = [...incorrectAnswerElements, correctAnswerElement];
 
   // Randomize the order of the responses so that the answer is not always the last button
   const shuffleRespones = (array) => {
@@ -61,16 +41,9 @@ function Questions(props) {
       array[j] = temp;
     }
   };
+
   shuffleRespones(responses);
 
-  // Create the response button elements
-  /*const responseButtons = responses.map((answer) => (
-    <button key={uuidv4()} id={props.id} className="responses">
-      {answer}
-    </button>
-  ));*/
-
-  console.log("these are the buttons", responses);
   return (
     <div>
       <section className="bottom-border">

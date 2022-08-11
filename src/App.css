@@ -86,8 +86,7 @@ img {
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-=======
+
 
 .check-answers-button {
   align-self: center;
@@ -96,5 +95,4 @@ img {
 
 .check-answers-button:hover {
   background-color: #4d5b9e83;
-}
->>>>>>> f7e684d (reupload of files)
+
