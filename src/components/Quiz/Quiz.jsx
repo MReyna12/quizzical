@@ -96,7 +96,7 @@ function Quiz(props) {
   ));
 
   return (
-    <section>
+    <section className="fade-in-top">
       {questions}
       <div
         className={`flex-margin ${

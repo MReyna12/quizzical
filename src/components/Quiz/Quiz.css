@@ -27,3 +27,19 @@
 .quiz-buttons:hover {
   background-color: #4d5b9e83;
 }
+
+.fade-in-top {
+  animation: fadeTop 1s 1 linear;
+}
+
+@keyframes fadeTop {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
